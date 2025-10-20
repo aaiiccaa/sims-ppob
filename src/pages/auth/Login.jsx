@@ -5,6 +5,7 @@ import Button from '../../components/Button';
 import EmailInput from '../../components/input/EmailInput';
 import PasswordInput from '../../components/input/PasswordInput';
 import { useState } from 'react';
+import api from '../../axios/api';
 
 const Login = () => {
     const [payload, setPayload] = useState({
@@ -12,9 +13,14 @@ const Login = () => {
         password: ""
     });
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log("Logging in with:", payload);
+        try {
+            const res = await api.post('/login', payload)
+            console.log(res)
+        } catch (err) {
+            console.error(err.response.data)
+        }
     };
 
     return (
