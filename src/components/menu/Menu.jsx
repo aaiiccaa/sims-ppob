@@ -24,8 +24,8 @@ const Menu = () => {
             {
                 menuData ? (
                     <div className="flex justify-between">
-                        {menuData.map((item) => (
-                            <div className="flex flex-col items-center gap-2 w-20">
+                        {menuData.map((item, index) => (
+                            <div className="flex flex-col items-center gap-2 w-20" key={index}>
                                 <img className="w-12 rounded-md" src={item.service_icon} alt={item.service_name} />
                                 <div className="text-xs text-center w-full">
                                     <span className="block leading-tight break-words">{item.service_name}</span>
