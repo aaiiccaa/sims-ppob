@@ -6,8 +6,12 @@ import EmailInput from '../../components/input/EmailInput';
 import PasswordInput from '../../components/input/PasswordInput';
 import { useState } from 'react';
 import api from '../../axios/api';
+import { useDispatch } from 'react-redux';
+import { setToken } from '../../store/authSlice';
+import { toast } from 'react-toastify';
 
 const Login = () => {
+    const dispatch = useDispatch();
     const [payload, setPayload] = useState({
         email: "",
         password: ""
@@ -18,8 +22,10 @@ const Login = () => {
         try {
             const res = await api.post('/login', payload)
             console.log(res)
+            dispatch(setToken(res.data.data.token))
         } catch (err) {
             console.error(err.response.data)
+            toast.error(err.response.data.message)
         }
     };
 

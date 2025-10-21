@@ -6,6 +6,8 @@ import EmailInput from '../../components/input/EmailInput';
 import PasswordInput from '../../components/input/PasswordInput';
 import { useState } from 'react';
 import NameInput from '../../components/input/NameInput';
+import api from '../../axios/api';
+import { toast } from 'react-toastify';
 
 const Register = () => {
     const [payload, setPayload] = useState({
@@ -16,10 +18,23 @@ const Register = () => {
     });
 
     const [confPassword, setConfPassword] = useState("")
+    const [error, setError] = useState("")
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        //error beda password taro di bawah field atau setelah submit?
+        
+        if (payload.password !== confPassword) {
+            setError("Password tidak cocok")
+            return
+        }
+
+        setError("")
+        try {
+            const res = await api.post("/registration", payload)
+            
+        } catch (err) {
+            toast.error(err.response.data.message)
+        }
         console.log("Logging in with:", payload);
     };
 
@@ -50,7 +65,7 @@ const Register = () => {
                         />
                         <EmailInput value={payload.email} onChange={(e) => setPayload({ ...payload, email: e.target.value })} />
                         <PasswordInput value={payload.password} onChange={(e) => setPayload({ ...payload, password: e.target.value })} />
-                        <PasswordInput value={confPassword} onChange={(e) => setConfPassword(e.target.value)} />
+                        <PasswordInput value={confPassword} onChange={(e) => setConfPassword(e.target.value)} error={error ? true : false} errorMessage={error}/>
                         <Button onClick={handleSubmit} type="submit">Registrasi</Button>
                     </form>
                 </div>
