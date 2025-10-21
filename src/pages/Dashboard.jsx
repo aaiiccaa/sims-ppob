@@ -5,11 +5,17 @@ import BalanceCard from "../page-components/BalanceCard"
 import api from "../axios/api"
 import { toast } from "react-toastify"
 import Banner from "../page-components/Banner"
+import ProfileBalanceSection from "../page-components/ProfileBalanceSection"
+import { useLocation } from "react-router-dom";
+import TopUp from "../page-components/TopUp"
+
 const Dashboard = () => {
+    const location = useLocation();
+    console.log("location", location)
+
     const [avatar, setAvatar] = useState()
     const [name, setName] = useState("")
     const [balance, setBalance] = useState()
-    const imageUrl = import.meta.env.VITE_IMG_URL
 
     const getProfile = async () => {
         try {
@@ -35,39 +41,35 @@ const Dashboard = () => {
         getBalance();
     }, [])
 
-    useEffect(() => {
-        console.log(balance)
-        console.log(name)
-    }, [balance, name])
-
     return (
         <>
             {
                 name ? (
                     <div className="flex flex-col gap-12 py-8">
-                        <div className="flex justify-between px-24">
-                            <div className="flex flex-col py-2 gap-4">
-                                <img className="w-14" src={avatar == `${imageUrl}/null` ? avatarDefault : avatar} alt="" />
-                                <div>
-                                    <div className="text-lg">Selamat datang,</div>
-                                    <div className="font-bold text-2xl">{name}</div>
-                                </div>
-                            </div>
-                            <BalanceCard balance={balance} />
-                        </div>
+                        <ProfileBalanceSection avatar={avatar} name={name} balance={balance} />
 
-                        
-                        <div className="px-24">
-                            <Menu />
-                        </div>
-                        <div className="flex flex-col gap-4">
-                            <div className="px-24 text-sm font-semibold">
-                                Temukan promo menarik
-                            </div>
-                            <div className="pl-24 pr-0 overflow-x-auto whitespace-nowrap">
-                                <Banner />
-                            </div>
-                        </div>
+                        {
+                            location.pathname === "/" && (
+                                <>
+                                    <div className="px-24">
+                                        <Menu />
+                                    </div>
+                                    <div className="flex flex-col gap-4">
+                                        <div className="px-24 text-sm font-semibold">
+                                            Temukan promo menarik
+                                        </div>
+                                        <div className="pl-24 pr-0 overflow-x-auto whitespace-nowrap">
+                                            <Banner />
+                                        </div>
+                                    </div>
+                                </>
+                            )
+                        }
+                        {
+                            location.pathname === "/topup" && (
+                                <TopUp/>
+                            )
+                        }
                     </div>
                 ) : (
                     <div></div>

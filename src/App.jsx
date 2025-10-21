@@ -8,6 +8,7 @@ import Akun from './pages/Akun.jsx'
 import { useSelector } from 'react-redux'
 import { ToastContainer } from 'react-toastify'; 
 import 'react-toastify/dist/ReactToastify.css';
+import TopUp from './page-components/TopUp.jsx'
 
 function App() {
   const token = useSelector((state) => state.auth.token)
@@ -23,6 +24,7 @@ function App() {
         <Route path='/' element={token ? <Layout /> : <Navigate to="/login"/>}>
           <Route index element={<Dashboard />} /> 
           <Route path='/akun' element={<Akun/>}/>
+          <Route path='/topup' element={<Dashboard/>}/>
         </Route>
       </Routes>
     </BrowserRouter>
