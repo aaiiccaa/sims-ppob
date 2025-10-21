@@ -26,10 +26,7 @@ const Banner = () => {
                     <div className="flex gap-4 w-max">
                         {data.map((item, index) => (
                             <div className="flex flex-col items-center gap-2" key={index}>
-                                <img className="rounded-md" src={item.banner_image} alt={item.banner_image} />
-                                <div className="text-xs text-center w-full">
-                                    <span className="block leading-tight break-words">{item.description}</span>
-                                </div>
+                                <img className="rounded-md" src={item.banner_image} alt={item.description} />
                             </div>
                         ))}
                     </div>

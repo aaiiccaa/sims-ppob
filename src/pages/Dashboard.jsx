@@ -47,20 +47,26 @@ const Dashboard = () => {
                     <div className="flex flex-col gap-12 py-8">
                         <div className="flex justify-between px-24">
                             <div className="flex flex-col py-2 gap-4">
-                                <img className="w-16" src={avatar == `${imageUrl}/null` ? avatarDefault : avatar} alt="" />
+                                <img className="w-14" src={avatar == `${imageUrl}/null` ? avatarDefault : avatar} alt="" />
                                 <div>
                                     <div className="text-lg">Selamat datang,</div>
                                     <div className="font-bold text-2xl">{name}</div>
                                 </div>
                             </div>
                             <BalanceCard balance={balance} />
-
                         </div>
+
+                        
                         <div className="px-24">
                             <Menu />
                         </div>
-                        <div className="pl-24 pr-0 overflow-x-auto whitespace-nowrap">
-                            <Banner />
+                        <div className="flex flex-col gap-4">
+                            <div className="px-24 text-sm font-semibold">
+                                Temukan promo menarik
+                            </div>
+                            <div className="pl-24 pr-0 overflow-x-auto whitespace-nowrap">
+                                <Banner />
+                            </div>
                         </div>
                     </div>
                 ) : (
