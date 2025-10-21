@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react"
 import avatarDefault from "../assets/avatar.png"
-import Menu from "../components/menu/Menu"
-import BalanceCard from "../components/BalanceCard"
+import Menu from "../page-components/Menu"
+import BalanceCard from "../page-components/BalanceCard"
 import api from "../axios/api"
 import { toast } from "react-toastify"
-import Banner from "../components/banner/Banner"
+import Banner from "../page-components/Banner"
 const Dashboard = () => {
     const [avatar, setAvatar] = useState()
     const [name, setName] = useState("")
@@ -70,7 +70,7 @@ const Dashboard = () => {
                         </div>
                     </div>
                 ) : (
-                    <div>loading</div>
+                    <div></div>
                 )
             }
 

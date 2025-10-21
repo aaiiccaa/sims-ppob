@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import api from "../../axios/api"
+import api from "../axios/api"
 import { toast } from "react-toastify"
 
 const Menu = () => {
@@ -34,7 +34,7 @@ const Menu = () => {
                         ))}
                     </div>
                 ) : (
-                    <div>Loading</div>
+                    <div></div>
                 )
             }
 

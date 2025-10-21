@@ -121,7 +121,7 @@ const Akun = () => {
                 </div>
             ) : (
                 <div className="w-full flex justify-center items-center">
-                    <p>Loading...</p>
+                    <p></p>
                 </div>
             )}
         </>

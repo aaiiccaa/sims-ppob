@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import api from "../../axios/api"
+import api from "../axios/api"
 import { toast } from "react-toastify"
 
 const Banner = () => {
@@ -32,7 +32,7 @@ const Banner = () => {
                     </div>
 
                 ) : (
-                    <div>Loading</div>
+                    <div></div>
                 )
             }
 
