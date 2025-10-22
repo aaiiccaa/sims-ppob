@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import TransactionItem from "../components/TransactionItem"
 import api from "../axios/api"
 import { toast } from "react-toastify"
@@ -8,6 +8,7 @@ const Transaction = () => {
     const [data, setData] = useState([])
     const [offset, setOffset] = useState(0)
     const [hasMore, setHasMore] = useState(true)
+    const isFirstRender = useRef(true)
 
     const getTransactions = async (offset) => {
         try {
@@ -17,7 +18,7 @@ const Transaction = () => {
                     offset: offset
                 }
             })
-            if (res.data.data.records.length < 10){
+            if (res.data.data.records.length < 5) {
                 setHasMore(false)
             }
             setData(prev => [...prev, ...res.data.data.records])
@@ -27,6 +28,10 @@ const Transaction = () => {
     }
 
     useEffect(() => {
+        if (isFirstRender.current) {
+            isFirstRender.current = false; 
+            return; 
+        }
         getTransactions(offset)
     }, [offset])
 
@@ -44,17 +49,15 @@ const Transaction = () => {
                 Semua transaksi
             </div>
             {
-                data ? (
+                data.length > 0 ? (
                     <div className="flex flex-col gap-4">
-                        <div className="">
-                            {data.map((item, index) => {
-                                return <TransactionItem data={item} key={index} />
-                            })}
-                        </div>
-                        <Button children={"Show more"} textOnly className={"font-semibold"} onClick={handleShowMore}/>
+                        {data.map((item, index) => {
+                            return <TransactionItem data={item} key={index} />
+                        })}
+                        <Button children={"Show more"} textOnly className={"font-semibold"} onClick={handleShowMore} />
                     </div>
                 ) : (
-                    <>hai</>
+                    <p>Data transaksi tidak tersedia</p>
                 )
             }
         </div>
