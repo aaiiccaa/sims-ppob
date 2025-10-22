@@ -8,6 +8,7 @@ import Banner from "../page-components/Banner"
 import ProfileBalanceSection from "../page-components/ProfileBalanceSection"
 import { useLocation } from "react-router-dom";
 import TopUp from "../page-components/TopUp"
+import Transaction from "../page-components/Transaction"
 
 const Dashboard = () => {
     const location = useLocation();
@@ -45,7 +46,7 @@ const Dashboard = () => {
         <>
             {
                 name ? (
-                    <div className="flex flex-col gap-12 py-8">
+                    <div className="flex flex-col gap-8 py-8">
                         <ProfileBalanceSection avatar={avatar} name={name} balance={balance} />
 
                         {
@@ -68,6 +69,11 @@ const Dashboard = () => {
                         {
                             location.pathname === "/topup" && (
                                 <TopUp/>
+                            )
+                        }
+                        {
+                            location.pathname === "/transactions" && (
+                                <Transaction/>
                             )
                         }
                     </div>

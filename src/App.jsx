@@ -25,6 +25,7 @@ function App() {
           <Route index element={<Dashboard />} /> 
           <Route path='/akun' element={<Akun/>}/>
           <Route path='/topup' element={<Dashboard/>}/>
+          <Route path='/transactions' element={<Dashboard />}/>
         </Route>
       </Routes>
     </BrowserRouter>
