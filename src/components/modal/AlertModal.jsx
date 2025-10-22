@@ -3,7 +3,7 @@ import Button from "../Button"
 
 const AlertModal = ({ open, onClose, type, title, message, amount, closeMessage = "Tutup" }) => {
     if (!open) return
-    console.log(type)
+    // console.log(type)
     return (
         <>
             <div className="absolute top-0 left-0 z-20 bg-black opacity-60 w-screen h-screen" />

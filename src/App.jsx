@@ -12,7 +12,7 @@ import TopUp from './page-components/TopUp.jsx'
 
 function App() {
   const token = useSelector((state) => state.auth.token)
-  console.log(token)
+  // console.log(token)
 
   return (
     <BrowserRouter>

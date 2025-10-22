@@ -21,7 +21,7 @@ const Login = () => {
         e.preventDefault();
         try {
             const res = await api.post('/login', payload)
-            console.log(res)
+            // console.log(res)
             dispatch(setToken(res.data.data.token))
         } catch (err) {
             console.error(err.response.data)

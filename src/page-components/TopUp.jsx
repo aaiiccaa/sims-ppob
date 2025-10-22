@@ -12,9 +12,9 @@ const TopUp = ({onBalancePlus}) => {
     const [alertModal, setAlertModal] = useState(false)
     const [type, setType] = useState("")
     const [error, setError] = useState("")
-    useEffect(() => {
-        console.log(value)
-    }, [value])
+    // useEffect(() => {
+    //     console.log(value)
+    // }, [value])
 
     const handleSubmit = () => {
         if (value < 10000) {

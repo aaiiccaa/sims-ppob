@@ -35,7 +35,7 @@ const Register = () => {
         } catch (err) {
             toast.error(err.response.data.message)
         }
-        console.log("Logging in with:", payload);
+        // console.log("Logging in with:", payload);
     };
 
     return (

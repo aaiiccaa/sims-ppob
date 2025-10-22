@@ -13,7 +13,7 @@ import Pay from "../page-components/Pay"
 
 const Dashboard = () => {
     const location = useLocation();
-    console.log("location", location)
+    // console.log("location", location)
 
     const [avatar, setAvatar] = useState()
     const [name, setName] = useState("")
@@ -57,9 +57,9 @@ const Dashboard = () => {
         setBalance(balance + price)
     }
 
-    useEffect(() => {
-        console.log("menu", menuSelected)
-    }, [menuSelected])
+    // useEffect(() => {
+    //     console.log("menu", menuSelected)
+    // }, [menuSelected])
 
     return (
         <>
