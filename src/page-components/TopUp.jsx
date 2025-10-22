@@ -51,10 +51,10 @@ const TopUp = ({onBalancePlus}) => {
             <div className="flex flex-col gap-10 px-24">
                 <div>
                     <div>
-                        silahkan masukan
+                        Silahkan masukan
                     </div>
                     <div className="text-2xl font-bold">
-                        Nominal topup
+                        Nominal Top up
                     </div>
                 </div>
                 <div className="flex gap-4">
