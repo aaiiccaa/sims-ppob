@@ -1,6 +1,6 @@
 import { Banknote } from "lucide-react";
 
-const PriceInput = ({ placeholder = "Nominal", value, onChange, className, error }) => {
+const PriceInput = ({ placeholder = "Nominal", value, onChange, className, error, disabled }) => {
     return (
         <>
         <div className="relative w-full">
@@ -10,6 +10,7 @@ const PriceInput = ({ placeholder = "Nominal", value, onChange, className, error
                 placeholder={placeholder}
                 value={value}
                 onChange={onChange}
+                disabled={disabled}
                 className={`border ${error? "border-red" : "border-gray-300"}  text-sm rounded-md px-4 py-2 w-full pl-10 focus:outline-none focus:ring-1 focus:ring-primary ${className || ""}`}
             />
         </div>

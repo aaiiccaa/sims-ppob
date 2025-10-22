@@ -50,7 +50,7 @@ const Transaction = () => {
             </div>
             {
                 data.length > 0 ? (
-                    <div className="flex flex-col gap-4">
+                    <div className="flex flex-col">
                         {data.map((item, index) => {
                             return <TransactionItem data={item} key={index} />
                         })}

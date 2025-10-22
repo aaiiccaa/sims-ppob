@@ -9,6 +9,7 @@ import ProfileBalanceSection from "../page-components/ProfileBalanceSection"
 import { useLocation } from "react-router-dom";
 import TopUp from "../page-components/TopUp"
 import Transaction from "../page-components/Transaction"
+import Pay from "../page-components/Pay"
 
 const Dashboard = () => {
     const location = useLocation();
@@ -17,6 +18,7 @@ const Dashboard = () => {
     const [avatar, setAvatar] = useState()
     const [name, setName] = useState("")
     const [balance, setBalance] = useState()
+    const [menuSelected, setMenuSelected] = useState()
 
     const getProfile = async () => {
         try {
@@ -38,9 +40,26 @@ const Dashboard = () => {
     }
 
     useEffect(() => {
+        setMenuSelected(null);
         getProfile();
         getBalance();
     }, [])
+
+    const handleMenuSelected = (item) => {
+        setMenuSelected(item)
+    }
+
+    const handleBalanceMinus = (price) => {
+        setBalance(balance - price)
+    }
+
+    const handleBalancePlus = (price) => {
+        setBalance(balance + price)
+    }
+
+    useEffect(() => {
+        console.log("menu", menuSelected)
+    }, [menuSelected])
 
     return (
         <>
@@ -50,10 +69,10 @@ const Dashboard = () => {
                         <ProfileBalanceSection avatar={avatar} name={name} balance={balance} />
 
                         {
-                            location.pathname === "/" && (
+                            location.pathname === "/" && !menuSelected && (
                                 <>
                                     <div className="px-24">
-                                        <Menu />
+                                        <Menu onSelected={handleMenuSelected} />
                                     </div>
                                     <div className="flex flex-col gap-4">
                                         <div className="px-24 text-sm font-semibold">
@@ -67,13 +86,18 @@ const Dashboard = () => {
                             )
                         }
                         {
+                            location.pathname === "/" && menuSelected && (
+                                <Pay item={menuSelected} onBalanceMinus={handleBalanceMinus} onBack={() => setMenuSelected()}/>
+                            )
+                        }
+                        {
                             location.pathname === "/topup" && (
-                                <TopUp/>
+                                <TopUp onBalancePlus={handleBalancePlus}/>
                             )
                         }
                         {
                             location.pathname === "/transactions" && (
-                                <Transaction/>
+                                <Transaction />
                             )
                         }
                     </div>

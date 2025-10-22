@@ -6,7 +6,7 @@ import PriceInput from "../components/input/PriceInput"
 import WarningModal from "../components/modal/WarningModal"
 import AlertModal from "../components/modal/AlertModal"
 
-const TopUp = () => {
+const TopUp = ({onBalancePlus}) => {
     const [value, setValue] = useState()
     const [warningModal, setWarningModal] = useState(false)
     const [alertModal, setAlertModal] = useState(false)
@@ -34,6 +34,7 @@ const TopUp = () => {
                 { top_up_amount: value }
             )
             handleAlertModal("success")
+            onBalancePlus(value)
         } catch (err) {
             toast.error(err.response.data.message)
             handleAlertModal("failed")
