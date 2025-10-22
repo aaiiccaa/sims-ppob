@@ -5,7 +5,7 @@ const PriceInput = ({ placeholder = "Nominal", value, onChange, className }) => 
         <div className="relative w-full">
             <Banknote className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 w-4 h-4" />
             <input
-                type="text"
+                type="number"
                 placeholder={placeholder}
                 value={value}
                 onChange={onChange}
