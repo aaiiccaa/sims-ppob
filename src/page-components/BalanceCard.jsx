@@ -16,11 +16,11 @@ const BalanceCard = ({ balance }) => {
                 <div>
                     {showBalance ? balance : (
                         <div className="flex gap-1">
-                            <Circle fill="white" />
-                            <Circle fill="white" />
-                            <Circle fill="white" />
-                            <Circle fill="white" />
-                            <Circle fill="white" />
+                            <Circle className="w-3" fill="white" />
+                            <Circle className="w-3" fill="white" />
+                            <Circle className="w-3" fill="white" />
+                            <Circle className="w-3" fill="white" />
+                            <Circle className="w-3" fill="white" />
                         </div>
                     )}
                 </div>
