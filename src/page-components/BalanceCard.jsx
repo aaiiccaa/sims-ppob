@@ -17,7 +17,7 @@ const BalanceCard = ({balance}) => {
                 </div>
             </div>
             <div onClick={() => setShowBalance(!showBalance)} className="absolute bottom-7 left-6 text-white text-xs cursor-pointer">
-                Lihat saldo
+                {showBalance ? "Tutup saldo" : "Lihat saldo"}
             </div>
         </div>
     )

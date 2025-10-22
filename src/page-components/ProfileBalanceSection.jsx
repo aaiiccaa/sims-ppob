@@ -10,8 +10,8 @@ const ProfileBalanceSection = ({avatar, name, balance}) => {
             <div className="flex flex-col py-2 gap-4">
                 <img className="w-14" src={avatar == `${imageUrl}/null` ? avatarDefault : avatar} alt="" />
                 <div>
-                    <div className="text-lg">Selamat datang,</div>
-                    <div className="font-bold text-2xl">{name}</div>
+                    <div className="text-sm">Selamat datang,</div>
+                    <div className="font-bold text-3xl">{name}</div>
                 </div>
             </div>
             <BalanceCard balance={balance} />
