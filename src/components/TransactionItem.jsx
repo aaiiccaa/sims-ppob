@@ -1,10 +1,11 @@
 import dateFormatter from "../fn/dateFormatter"
+import priceFormatter from "../fn/priceFormatter";
 
 const TransactionItem = ({ data }) => {
     const color = data.transaction_type === "TOPUP" ? "text-green-500" : "text-red-500";
 
     function getTotal() {
-        return data.transaction_type === "TOPUP" ? `+ Rp${data.total_amount}` : `- Rp${data.total_amount}`;
+        return data.transaction_type === "TOPUP" ? `+ Rp${priceFormatter(data.total_amount)}` : `- Rp${priceFormatter(data.total_amount)}`;
     }
 
     return (

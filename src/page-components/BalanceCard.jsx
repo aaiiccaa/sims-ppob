@@ -1,6 +1,7 @@
 import { useState } from "react"
 import bgSaldo from "../assets/bgSaldo.png"
 import { Circle } from "lucide-react";
+import priceFormatter from "../fn/priceFormatter";
 
 const BalanceCard = ({ balance }) => {
     const [showBalance, setShowBalance] = useState(false);
@@ -14,7 +15,7 @@ const BalanceCard = ({ balance }) => {
             <div className="absolute flex gap-2 top-15 left-6 text-white text-3xl font-bold items-center">
                 <div>Rp</div>
                 <div>
-                    {showBalance ? balance : (
+                    {showBalance ? priceFormatter(balance) : (
                         <div className="flex gap-1">
                             <Circle className="w-3" fill="white" />
                             <Circle className="w-3" fill="white" />
