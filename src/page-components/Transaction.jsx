@@ -28,10 +28,10 @@ const Transaction = () => {
     }
 
     useEffect(() => {
-        if (isFirstRender.current) {
-            isFirstRender.current = false; 
-            return; 
-        }
+        // if (isFirstRender.current) {
+        //     isFirstRender.current = false; 
+        //     return; 
+        // }
         getTransactions(offset)
     }, [offset])
 
