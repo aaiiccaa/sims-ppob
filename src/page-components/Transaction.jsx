@@ -5,7 +5,7 @@ import { toast } from "react-toastify"
 import Button from "../components/Button"
 
 const Transaction = () => {
-    const [data, setData] = useState()
+    const [data, setData] = useState([])
     const [offset, setOffset] = useState(0)
     const [hasMore, setHasMore] = useState(true)
 
