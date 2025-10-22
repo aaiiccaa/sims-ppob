@@ -11,13 +11,20 @@ const TopUp = () => {
     const [warningModal, setWarningModal] = useState(false)
     const [alertModal, setAlertModal] = useState(false)
     const [type, setType] = useState("")
+    const [error, setError] = useState("")
     useEffect(() => {
         console.log(value)
     }, [value])
 
     const handleSubmit = () => {
-        // if (value < 10000) 
-        //to do
+        if (value < 10000) {
+            setError("Nominal minimal 10.000")
+            return
+        } else if (value > 1000000){
+            setError("Nominal maksimal 1.000.000")
+            return
+        }
+        setError("")
         setWarningModal(true)
     }
 
@@ -55,6 +62,7 @@ const TopUp = () => {
                             <PriceInput
                                 value={value}
                                 onChange={(e) => setValue(e.target.value)}
+                                error={error}
                             />
                         </div>
                         <div>
